@@ -19,3 +19,11 @@ limitations: The conversation keeps getting bigger and hence Context-window limi
              SQLite doesn't understand meaning
              
 
+V3.1 RAG pipeline with semantic retrieval engine
+Have used ollama "nomic-embed-text" embedding model that generates vectors or embeddings.
+comparision between vectors (input and all the documents)are done using cosine similarity
+semantic search is done to retrive top k related vectors
+top k context is sent to the LLM to generate response by using only the information from the context
+we have considered list of python dictonaries as documents where each dictionary is a document
+we have not used any memory to store the chatbot convo
+use python -m app.test_rag to run this version

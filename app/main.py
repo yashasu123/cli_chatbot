@@ -22,41 +22,54 @@
 #     print(asst)
 
 #v2.2
-from app.services.ollama_Service import OllamaService
-from app.memory.database import Database
+#from app.services.ollama_Service import OllamaService
+#from app.memory.database import Database
 
 
-ollama = OllamaService()
+#ollama = OllamaService()
 
-db = Database()
-db.create_tables()
+#db = Database()
+#db.create_tables()
 
-while True:
+#while True:
 
-    user_input = input("You: ")
+#    user_input = input("You: ")
 
-    if not user_input:
-        break
+#    if not user_input:
+#        break
 
     # Save user message
-    db.save_message("user", user_input)
+#    db.save_message("user", user_input)
 
     # Get conversation history
-    messages = db.get_messages()  #returns list of tuples
+#    messages = db.get_messages()  #returns list of tuples
 
     # Build prompt
-    prompt = ""
+#    prompt = ""
 
-    for role, content in messages:
-        prompt += f"{role}: {content}\n"
+#    for role, content in messages:
+#        prompt += f"{role}: {content}\n"
 
     # Get response from Ollama
-    response = ollama.generate(prompt)
+#    response = ollama.generate(prompt)
 
     # Save assistant response
-    db.save_message("assistant", response)
+#    db.save_message("assistant", response)
 
-    print("Bot:", response)
+#    print("Bot:", response)
+
+#v3.1 
+from app.services.embedding_service import EmbeddingService
+
+embedding_service = EmbeddingService()
+
+vector = embedding_service.generate_embedding(
+    "I love learning Python"
+)
+
+print("Vector:", vector)
+print("Number of dimensions:", len(vector))
+print("Data type:", type(vector))
 
 
 
